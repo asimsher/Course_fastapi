@@ -2,15 +2,15 @@ version: '3'
 
 services:
   web:
-    build:
-      command:
-        bash -c 'uvicorn main:course_app --host 0.0.0.0 --port 8000'
-      volumes:
-        - .:/course_app
-      ports:
-        - "8000:8000"
-      depends_on:
-        - db
+    build: .
+    command:
+      bash -c 'uvicorn main:course_app --host 0.0.0.0 --port 8000'
+    volumes:
+      - .:/course_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
   db:
     image: postgres:17
     restart: always
@@ -19,7 +19,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - postgres_data:data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
 
 volumes:

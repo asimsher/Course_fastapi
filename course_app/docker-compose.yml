@@ -3,8 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command:
-      bash -c 'uvicorn main:course_app --host 0.0.0.0 --port 8000'
+    command: uvicorn main:course_app --host 0.0.0.0 --port 8000
     volumes:
       - .:/course_app
     ports:

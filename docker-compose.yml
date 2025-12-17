@@ -21,6 +21,14 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - .:/course_app
+    depends_on:
+      - db
 
 
 volumes:

@@ -26,10 +26,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - .:/course_app
+      - .:/
     depends_on:
-      - db
-
+      - web
 
 volumes:
   postgres_data:

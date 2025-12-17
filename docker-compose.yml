@@ -23,12 +23,16 @@ services:
 
   nginx:
     build: ./nginx
+    restart: always
     ports:
       - "80:80"
     volumes:
-      - .:/
+      - static_volume:/app/static
+      - media_volume:/app/media
     depends_on:
       - web
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:

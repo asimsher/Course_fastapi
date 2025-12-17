@@ -48,5 +48,5 @@ course_app.include_router(auth.auth_router)
 course_app.include_router(category.category_router)
 course_app.include_router(courses.course_router)
 
-if __name__ == "__main__":
-    uvicorn.run(course_app, host="127.0.0.1", port=8000)
+# if __name__ == "__main__":
+#     uvicorn.run(course_app, host="127.0.0.1", port=80000)

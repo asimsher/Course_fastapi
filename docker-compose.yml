@@ -10,6 +10,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      -
   db:
     image: postgres:17
     restart: always
@@ -19,6 +20,7 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
 
 
 volumes:

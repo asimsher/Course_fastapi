@@ -10,6 +10,7 @@ from passlib.context import CryptContext
 import redis.asyncio as redis
 from contextlib import asynccontextmanager
 from fastapi_limiter import FastAPILimiter
+
 from course_app.api.endpoints import auth, courses, category
 from sqladmin import Admin, ModelView
 from course_app.admin.setup import setup_admin
@@ -38,8 +39,8 @@ async def get_db():
 
 
 
-course_app = FastAPI(title='Store API', lifespan=lifespan)
-course_app.add_middleware(SessionMiddleware, secret_key="SECRET_KEY")
+course_app = FastAPI(title='Store API')
+# course_app.add_middleware(SessionMiddleware, secret_key="SECRET_KEY")
 setup_admin(course_app)
 
 admin = Admin(course_app, engine)
@@ -48,5 +49,5 @@ course_app.include_router(auth.auth_router)
 course_app.include_router(category.category_router)
 course_app.include_router(courses.course_router)
 
-# if __name__ == "__main__":
-#     uvicorn.run(course_app, host="127.0.0.1", port=80000)
+if __name__ == "__main__":
+    uvicorn.run(course_app, host="127.0.0.1", port=8002)

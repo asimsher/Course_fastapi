@@ -24,11 +24,11 @@ async def create_course(course:CourseSchema, db: Session = Depends(get_db)):
     db.refresh(db_course)
     return db_course
 
-@course_router.get('/', response_model=List[CourseSchema])
+@course_router.get('/courses', response_model=List[CourseSchema])
 async def list_courses(db: Session = Depends(get_db)):
     return db.query(Course).all()
 
-@course_router.get('/', response_model=CourseSchema)
+@course_router.get('/course/', response_model=CourseSchema)
 async def detail_courses(course_id: int, db: Session = Depends(get_db)):
     course = db.query(Course).filter(Course.id == course_id).first()
     if course is None:

@@ -28,7 +28,7 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - web
+      - db
 
 volumes:
   postgres_data:
